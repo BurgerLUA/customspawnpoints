@@ -75,7 +75,6 @@ function CSP_CreateSpawns()
 			local MapData = CSP_GetMapData()
 
 			for k,v in pairs(CSP_CachedModels) do
-				print(v)
 				if v:IsValid() then
 					v:Remove()
 				end
@@ -112,6 +111,3 @@ function CSP_CreateSpawns()
 end
 
 hook.Add("Think","CSP_CreateSpawns",CSP_CreateSpawns)
-
-
-print("LOADED")
