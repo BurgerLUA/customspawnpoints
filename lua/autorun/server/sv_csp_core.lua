@@ -1,5 +1,8 @@
+local TeamMode = false
+
 function CSP_PlaceSpawns()
 
+	if TeamMode then return end
 	if not CSP_HasMapData() then return end
 
 	local GAMEMODE = gmod.GetGamemode()
