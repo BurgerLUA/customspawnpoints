@@ -6,6 +6,8 @@ local RenderedModels = false
 
 local SpawnMaterial = Material("sprites/animglow02")
 
+local CSP_DrawDistance = 1024
+
 function CSP_DrawSpawns()
 	
 	local ply = LocalPlayer()
@@ -21,11 +23,7 @@ function CSP_DrawSpawns()
 			local IsVisible = ScreenTable.visible and ply:IsLineOfSightClear( v.pos )
 			
 			if IsVisible then
-			
-				local Base = 500
-			
-				local DistanceMul = math.Clamp( (Base - EyePos():Distance(v.pos)),0,Base )
-			
+				local DistanceMul = math.Clamp( (CSP_DrawDistance - EyePos():Distance(v.pos)),0,CSP_DrawDistance )
 				surface.SetDrawColor( Color(255,255,255,255) )
 				surface.SetMaterial( SpawnMaterial	) -- If you use Material, cache it!
 				surface.DrawTexturedRectRotated( PosX, PosY, DistanceMul, DistanceMul ,CurTime()*10 )
@@ -48,8 +46,7 @@ function CSP_DrawLight()
 		
 			local FlashLight = DynamicLight( k + 1000 )
 			
-			local Base = 500
-			local DistanceMul = math.Clamp( (Base - EyePos():Distance(v.pos)),0,Base )
+			local DistanceMul = math.Clamp( (CSP_DrawDistance - EyePos():Distance(v.pos)),0, CSP_DrawDistance )
 
 			if FlashLight then
 				local FadeOutTime = FrameTime()*2
@@ -97,3 +94,23 @@ function CSP_CreateSpawns()
 end
 
 hook.Add("Think","CSP_CreateSpawns",CSP_CreateSpawns)
+
+function CSP_GetCode(ply)
+
+	local Pos = ply:GetPos() + Vector(0,0,61)
+	Pos = Vector(math.floor(Pos.x),math.floor(Pos.y),math.floor(Pos.z))
+	local Ang = ply:EyeAngles()
+	Ang:SnapTo("p",45)
+	Ang:SnapTo("y",45)
+	Ang:SnapTo("r",45)
+	
+	local String = "{pos = Vector(".. Pos.x ..",".. Pos.y ..",".. Pos.z .."), ang = Angle(".. Ang.p ..",".. Ang.y ..",".. Ang.r ..")},"
+	SetClipboardText( String )
+	print(String)
+
+end
+
+concommand.Add("csp_getpos",CSP_GetCode)
+
+
+
