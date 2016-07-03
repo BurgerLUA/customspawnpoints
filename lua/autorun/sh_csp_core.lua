@@ -17,6 +17,21 @@ CSPSpawnPoints["gm_construct"] = {
 	{pos = Vector(-4093,4884,-30), ang = Angle(0,135,0)},
 }
 
+CSPSpawnPoints["ttt_clue_se"] = {
+	{pos = Vector(-262,-301,61), ang = Angle(0,0,0)},
+	{pos = Vector(729,-711,61), ang = Angle(0,135,0)},
+	{pos = Vector(-254,130,61), ang = Angle(0,45,0)},
+	{pos = Vector(-76,893,61), ang = Angle(0,-135,0)},
+	{pos = Vector(691,210,61), ang = Angle(0,-180,0)},
+	{pos = Vector(694,611,85), ang = Angle(0,-180,0)},
+	{pos = Vector(299,1372,85), ang = Angle(0,-90,0)},
+	{pos = Vector(761,379,261), ang = Angle(0,-135,0)},
+	{pos = Vector(731,-302,261), ang = Angle(0,135,0)},
+	{pos = Vector(756,-113,421), ang = Angle(0,135,0)},
+	{pos = Vector(-376,821,261), ang = Angle(0,-45,0)},
+	{pos = Vector(-394,317,261), ang = Angle(0,-45,0)},
+}
+
 
 CSPSpawnPoints["fightspace3b"] = {
 	-- Ramp Hanger

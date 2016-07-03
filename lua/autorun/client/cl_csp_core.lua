@@ -6,7 +6,7 @@ local RenderedModels = false
 
 local SpawnMaterial = Material("sprites/animglow02")
 
-local CSP_DrawDistance = 1024
+local CSP_DrawDistance = 512
 
 function CSP_DrawSpawns()
 	
@@ -23,7 +23,7 @@ function CSP_DrawSpawns()
 			local IsVisible = ScreenTable.visible and ply:IsLineOfSightClear( v.pos )
 			
 			if IsVisible then
-				local DistanceMul = math.Clamp( (CSP_DrawDistance - EyePos():Distance(v.pos)),0,CSP_DrawDistance )
+				local DistanceMul = math.Clamp( (CSP_DrawDistance - EyePos():Distance(v.pos)),0,CSP_DrawDistance ) / 2
 				surface.SetDrawColor( Color(255,255,255,255) )
 				surface.SetMaterial( SpawnMaterial	) -- If you use Material, cache it!
 				surface.DrawTexturedRectRotated( PosX, PosY, DistanceMul, DistanceMul ,CurTime()*10 )
